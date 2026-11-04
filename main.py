@@ -1,15 +1,28 @@
-n = int(input("Введите число n: "))
+# ======== итеративная версия ========
+n = int(input("Введите n: "))
 
-sum_numbers = 0
-product = 1
-sum_squares = 0
+a, b = 0, 1
 
-# делаем до n+1, т.к. нужно до n включительно
-for i in range(1, n + 1):
-    sum_numbers += i
-    product *= i
-    sum_squares += i**2
+print(f"Первые {n} чисел Фибоначи:")
+for i in range(n):
+    # здесь делаем параметр end=" ", т.к. нам нужно вывести эти числа в строчку
+    # по умолчанию, end="\n"
+    print(a, end=" ")
+    a, b = b, a + b
 
-print(f"Сумма: {sum_numbers}")
-print(f"Произведение (N!): {product}")
-print(f"Сумма квадратов: {sum_squares}")
+print()
+
+# ======== рекурсивная версия ========
+N = int(input("Введите n: "))
+
+
+def fib(a=0, b=1, counter=1):
+    print(a, end=" ")
+
+    if counter == N:
+        print()
+        return
+    return fib(b, a + b, counter + 1)
+
+
+fib()
