@@ -1,23 +1,16 @@
-n = 5
+n = int(input("Введите число N: "))
+primes = []
 
-# прямоугольник
-print("Прямоугольник:")
-for i in range(n):
-    print("*" * n)
+for num in range(2, n + 1):
+    is_prime = True
 
-# Треугольник
-print("\nТреугольник:")
-for i in range(1, n + 1):
-    print("*" * i)
+    # делим num на все числа от 2 до корня из num
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            is_prime = False
+            break
 
-# Ёлочка
-print("\nЁлочка:")
-for i in range(1, n + 1):
-    print(" " * (n - i) + "*" * (2 * i - 1))
+    if is_prime:
+        primes.append(num)
 
-# Ромб
-print("\nРомб:")
-for i in range(1, n + 1):
-    print(" " * (n - i) + "*" * (2 * i - 1))
-for i in range(n - 1, 0, -1):
-    print(" " * (n - i) + "*" * (2 * i - 1))
+print(f"Простые числа до {n}: {primes}")
