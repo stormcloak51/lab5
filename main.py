@@ -1,29 +1,17 @@
-from random import randint
+eps = float(input("Введите точность (например 0.0001): "))
 
-n = randint(1000, 9999)
+print(len(str(eps)))
+e = 1
+fact = 1
+n = 1
+term = 1
 
-while True:
-    bulls, cows = 0, 0
-    n_str = str(n)
+while term > eps:
+    print(e)
+    fact *= n
+    term = 1 / fact
+    e += term
+    n += 1
 
-    sug = input("Введите число: ")
-
-    if n_str == sug:
-        print("Угадали")
-        break
-
-    for i in range(4):
-        if sug[i] == n_str[i]:
-            bulls += 1
-        elif sug[i] in n_str:
-            cows += 1
-    print(
-        "Не угадали!",
-        f"Количество быков: {bulls}",
-        f"Количество коров: {cows}",
-        sep="\n",
-    )
-    (
-        bulls,
-        cows,
-    ) = 0, 0
+# логичка вычисления чисел после точки
+print(f"e = {e:.{len(str(eps)) - 2}f}")
