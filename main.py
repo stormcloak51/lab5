@@ -1,16 +1,23 @@
-n = int(input("Введите число: "))
-original = n
-reversed_num = 0
+n = 5
 
-temp = n
-# берем концепцию перевернутого числа с прошлом задачи
-while temp > 0:
-    digit = temp % 10
-    reversed_num = reversed_num * 10 + digit
-    temp //= 10
+# прямоугольник
+print("Прямоугольник:")
+for i in range(n):
+    print("*" * n)
 
-# далее проверяем это перевёрнутое число с оригиналом
-if original == reversed_num:
-    print(f"{original} — палиндром")
-else:
-    print(f"{original} — не палиндром")
+# Треугольник
+print("\nТреугольник:")
+for i in range(1, n + 1):
+    print("*" * i)
+
+# Ёлочка
+print("\nЁлочка:")
+for i in range(1, n + 1):
+    print(" " * (n - i) + "*" * (2 * i - 1))
+
+# Ромб
+print("\nРомб:")
+for i in range(1, n + 1):
+    print(" " * (n - i) + "*" * (2 * i - 1))
+for i in range(n - 1, 0, -1):
+    print(" " * (n - i) + "*" * (2 * i - 1))
