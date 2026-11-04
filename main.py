@@ -1,16 +1,29 @@
-n = int(input("Введите число N: "))
-primes = []
+from random import randint
 
-for num in range(2, n + 1):
-    is_prime = True
+n = randint(1000, 9999)
 
-    # делим num на все числа от 2 до корня из num
-    for i in range(2, int(num**0.5) + 1):
-        if num % i == 0:
-            is_prime = False
-            break
+while True:
+    bulls, cows = 0, 0
+    n_str = str(n)
 
-    if is_prime:
-        primes.append(num)
+    sug = input("Введите число: ")
 
-print(f"Простые числа до {n}: {primes}")
+    if n_str == sug:
+        print("Угадали")
+        break
+
+    for i in range(4):
+        if sug[i] == n_str[i]:
+            bulls += 1
+        elif sug[i] in n_str:
+            cows += 1
+    print(
+        "Не угадали!",
+        f"Количество быков: {bulls}",
+        f"Количество коров: {cows}",
+        sep="\n",
+    )
+    (
+        bulls,
+        cows,
+    ) = 0, 0
